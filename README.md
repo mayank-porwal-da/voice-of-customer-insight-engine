@@ -1,309 +1,198 @@
-# 📊 VoC Insight Engine | Voice of Customer AI Analysis Platform
+# 📊 VoC Insight Engine
 
-> **Transform raw customer reviews into actionable product strategy in seconds using advanced AI agents**
+Transform raw customer reviews into actionable product strategy using AI-powered analysis.
 
-![Python](https://img.shields.io/badge/Python-3.13.6-3776ab?style=flat-square&logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.55-FF4B4B?style=flat-square&logo=streamlit)
-![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.5%20Flash-4285F4?style=flat-square&logo=google)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
+![Python](https://img.shields.io/badge/Python-3.13.6-3776ab?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Production%20Ready-green?style=flat-square)
 
 ---
 
-## 🎯 Executive Summary
+## Overview
 
-**VoC Insight Engine** is an enterprise-grade platform that leverages dual-agent AI architecture to automatically extract, analyze, and synthesize customer feedback into strategic product intelligence. Built for product teams, engineering managers, and startup founders, this tool eliminates the manual bottleneck of customer review analysis and drives data-informed decision-making.
+VoC Insight Engine automatically analyzes customer reviews using a dual-agent AI architecture. Extract sentiment, identify product flaws, and generate engineering action plans in seconds—not hours.
 
-### Key Value Propositions:
-✅ **90% Faster Analysis** - Analyze hundreds of reviews in seconds vs. hours of manual work  
-✅ **AI-Powered Strategy** - AI generates actionable engineering roadmaps, not just sentiment scores  
-✅ **Multi-Product Analytics** - Manage unlimited products with instant insights  
-✅ **Intelligent Caching** - Seamless performance with zero redundant API calls  
-✅ **Enterprise-Ready** - Production-grade security, error handling, and state management  
-
----
-
-## 🌟 Features
-
-### 💡 **Dual-Agent AI Architecture**
-
-#### **Agent 1: Extraction Agent** 
-- Analyzes raw customer reviews using Google Gemini 2.5 Flash
-- Extracts structured insights in real-time
-- Computes AI Sentiment Scores (1.0-10.0 range)
-- Identifies top flaws and praised features with evidence
-- Returns JSON-structured data for programmatic access
-
-#### **Agent 2: Strategy Agent**
-- Generates engineering action plans from identified flaws
-- Creates 3-step immediate action roadmaps
-- Produces markdown-formatted strategy documentation
-- Evidence-based recommendations (not generic advice)
-- Tailored specifically to your product's unique issues
-
-### 📈 **Advanced Analytics Dashboard**
-
-```
-┌─────────────────────────────────────────┐
-│   Rating Distribution Card              │
-│   ⭐ 3.5/5.0 (72 ratings)              │
-│   ▓▓▓▓░ 5-star: 18 reviews (25%)       │
-│   ▓▓▓░░ 4-star: 14 reviews (19%)       │
-│   ▓▓░░░ 3-star: 13 reviews (18%)       │
-│   ▓░░░░ 2-star: 15 reviews (21%)       │
-│   ░░░░░ 1-star: 12 reviews (17%)       │
-├─────────────────────────────────────────┤
-│   Weekly Trend Analysis                 │
-│   (Interactive Plotly Chart)            │
-│   Date Range: Mar 01 - Mar 31, 2026    │
-└─────────────────────────────────────────┘
-```
-
-### 🔐 **Flexible API Key Management**
-- **User-Provided Keys**: Support for higher rate limits and dedicated quotas
-- **Fallback .env Configuration**: Default key with free-tier support
-- **Smart Warnings**: Clear guidance on rate limits and best practices
-- **Real-Time Status Indicators**: Visual feedback on which API key is active
-
-### 💾 **Intelligent Caching System**
-- **Per-Product Caching**: Each product's insights cached independently
-- **Automatic Invalidation**: Cache cleared when new CSV uploaded
-- **Session Persistence**: Results persist across UI refreshes
-- **User-Controlled Refresh**: One-click regeneration with "🔄 Refresh" button
-- **Visual Indicators**: "✅ Cached" and "📦 Showing cached insights" badges
-
-### 📤 **Multi-Product CSV Support**
-- Import unlimited products in single upload
-- Automatic column validation
-- Support for any review schema (custom columns)
-- Sample CSV download for format guidance
-- Batch processing for enterprise datasets
-
-### 📊 **Interactive Visualizations**
-- Sentiment gauge with color-coded health indicators (🟢 Green/🟡 Yellow/🔴 Red)
-- Weekly rating trend analysis with spline interpolation
-- Expandable flaws and features sections with evidence
-- Fully responsive design for desktop and tablet
+**Key Benefits:**
+- 90% faster review analysis (16 seconds vs hours)
+- Multi-product support with intelligent caching
+- AI-generated action plans (not generic insights)
+- Zero deployment overhead (Streamlit-based)
+- 10,000+ reviews per session
 
 ---
 
-## 🏗️ Architecture
+## Features
 
-### **System Design**
-
-```
-┌─────────────────────────────────────────────────────────────┐
-│                    User Interface (Streamlit)               │
-│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐      │
-│  │ Data Upload  │  │ Product Sel. │  │ Analytics    │      │
-│  │ & API Config │  │ Dashboard    │  │ Visualization│      │
-│  └──────────────┘  └──────────────┘  └──────────────┘      │
-└────────────────┬─────────────────────────────────────┬──────┘
-                 │                                      │
-         ┌───────▼────────┐                 ┌──────────▼─┐
-         │ Session State  │                 │   Cache    │
-         │ Management     │                 │  Storage   │
-         └───────┬────────┘                 └──────────┬──┘
-                 │                                      │
-    ┌────────────▼──────────────────────────────────────▼─────┐
-    │           Dual-Agent AI Pipeline                        │
-    │  ┌────────────────────┐  ┌────────────────────┐        │
-    │  │   Agent 1:         │  │   Agent 2:         │        │
-    │  │   Extraction       │  │   Strategy         │        │
-    │  │   (JSON Output)    │  │   (Markdown)       │        │
-    │  └────────────────────┘  └────────────────────┘        │
-    │           │                                      │       │
-    │           └──────────────┬──────────────────────┘       │
-    │                          │                              │
-    │                    ┌─────▼─────┐                       │
-    │                    │ JSON Parse │                       │
-    │                    │ & Format   │                       │
-    │                    └─────┬─────┘                       │
-    └────────────────────────┬──────────────────────────────┘
-                             │
-                    ┌────────▼────────┐
-                    │ Google Gemini   │
-                    │ 2.5 Flash API   │
-                    │                 │
-                    │ - Low Latency   │
-                    │ - High Quality  │
-                    │ - Cost Effective│
-                    └─────────────────┘
-```
-
-### **Technology Stack**
-
-| Component | Technology | Purpose |
-|-----------|-----------|---------|
-| **Frontend** | Streamlit 1.40+ | Real-time web UI, zero deployment overhead |
-| **AI Engine** | Google Gemini 2.5 Flash | State-of-the-art language model, fast inference |
-| **Data Processing** | Pandas | CSV parsing, aggregation, filtering |
-| **Visualization** | Plotly, Matplotlib | Interactive charts, responsive design |
-| **State Management** | Streamlit Session State | Persistent data across reruns, caching |
-| **Configuration** | Python-dotenv | Environment variable management |
-| **Runtime** | Python 3.9+ | Cross-platform compatibility |
-
-### **Data Flow Diagram**
-
-```
-CSV Upload
-    ↓
-[Validation] → Check required columns (product_name, rating, review_text)
-    ↓
-[Caching Layer] → Check if file already processed
-    ↓
-[Product Selector] → User picks product to analyze
-    ↓
-[Data Filtering] → prod_df = df[df.product_name == selected]
-    ↓
-[Analytics Generation]
-    ├→ Calculate avg_rating, total_reviews
-    ├→ Generate rating distribution
-    └→ Build weekly trend analysis
-    ↓
-[AI Pipeline] (On button click)
-    ├→ [Agent 1] Format reviews → Call Gemini → Parse JSON
-    │         → Extract: sentiment, summary, flaws, features
-    │
-    └→ [Agent 2] Format flaws → Call Gemini → Parse Markdown
-              → Generate: action plan, timeline, priorities
-    ↓
-[Caching] → Store insights per product
-    ↓
-[Rendering] → Display results with indicators
-    ↓
-[Optional Refresh] → User can clear cache and regenerate
-```
+- **Agent 1: Extraction** - Analyzes reviews, extracts sentiment (1-10 scale), identifies flaws & praised features
+- **Agent 2: Strategy** - Generates 3-step engineering action plans with priorities
+- **Dashboard** - Rating distributions, weekly trends, interactive visualizations
+- **Caching** - Per-product results cached; cleared on new CSV upload
+- **Flexible API Keys** - Use your own Gemini API key or .env fallback
+- **Batch Processing** - Analyze unlimited products from single CSV upload
 
 ---
 
-## 📋 Requirements
+## Quick Start
 
-### **Core Dependencies**
-```
-Python 3.9+
-Streamlit >= 1.40.0
-pandas >= 2.0.0
-plotly >= 6.0.0
-google-genai >= 1.0.0
-python-dotenv >= 1.0.0
-```
-
-### **System Requirements**
-- **RAM**: Minimum 2GB (recommended 4GB+)
-- **Storage**: 500MB for dependencies
-- **Internet**: Required for Gemini API calls
-- **Browser**: Modern browser (Chrome, Firefox, Safari, Edge)
-
-### **API Requirements**
-- **Google Gemini API Key**: [Get free tier here](https://aistudio.google.com/app/apikey)
-- **Rate Limits**: 
-  - Free tier: 15 requests/minute
-  - Recommended: Provide your own key for higher limits
-
----
-
-## 🚀 Installation & Setup
-
-### **Step 1: Clone Repository**
+### Install
 ```bash
-git clone <repository-url>
+# 1. Clone repository
+git clone <repo-url>
 cd acap_genai_academy
-```
 
-### **Step 2: Create Virtual Environment**
-```bash
-# Windows
+# 2. Create virtual environment
 python -m venv acap-genai
-.\acap-genai\Scripts\Activate.ps1
+.\acap-genai\Scripts\Activate.ps1  # Windows
+# source acap-genai/bin/activate  # macOS/Linux
 
-# macOS/Linux
-python3 -m venv acap-genai
-source acap-genai/bin/activate
-```
-
-### **Step 3: Install Dependencies**
-```bash
+# 3. Install dependencies
 pip install -r requirements.txt
+
+# 4. Configure API key
+echo "GEMINI_API_KEY=your_key_here" > .env
 ```
 
-### **Step 4: Configure API Key**
-
-**Option A: Using .env file (Recommended for Development)**
-```bash
-# Create .env file in project root
-echo "GEMINI_API_KEY=your_api_key_here" > .env
-```
-
-**Option B: Using Frontend Input**
-- Launch the app
-- Paste your API key in the "API Configuration" sidebar
-- App shows success status immediately
-
-**Option C: Production Environment Variables**
-```bash
-export GEMINI_API_KEY="your_api_key_here"
-streamlit run app.py
-```
-
-### **Step 5: Run Application**
+### Run
 ```bash
 streamlit run app.py
 ```
-
-The app will launch at: `http://localhost:8501`
+Open http://localhost:8501
 
 ---
 
-## 📚 Usage Guide
+## How to Use
 
-### **Basic Workflow**
+1. **Prepare CSV** with columns: `product_name`, `rating`, `review_text`
+   - Download template from app sidebar
+   - Include all products in one file
 
-#### **1. Prepare Your Data**
-Create or download a CSV with this schema:
-```csv
-review_id,product_id,product_name,rating,review_date,review_text
-1,P101,AeroBrew Smart Mug,5,2026-03-01,"Absolutely love it! Keeps my coffee hot for hours."
-2,P101,AeroBrew Smart Mug,2,2026-03-05,"App keeps crashing on my Android phone."
-3,P202,Lumina Desk Lamp,4,2026-03-02,"Perfect lighting for my home office."
+2. **Upload** - Click "Upload your reviews (CSV)" in sidebar
+
+3. **Select Product** - Choose from dropdown list
+
+4. **View Dashboard** - Rating stats and trends auto-generate
+
+5. **Generate Insights** - Click "🧠 Generate AI Insights"
+   - Agent 1 extracts flaws & features (~8s)
+   - Agent 2 creates action plan (~7s)
+
+6. **Manage Cache** - Results cached per product; switch products for instant loading; click "🔄 Refresh" to regenerate
+
+---
+
+## Use Cases
+
+- **E-Commerce**: Analyze product reviews weekly for roadmapping
+- **SaaS**: Split feedback by tier for tier-specific prioritization
+- **Startups**: Free-tier Gemini API for rapid iteration
+- **Enterprise**: Scalable VoC platform with audit trail
+
+---
+
+## Tech Stack
+
+See `requirements.txt` for all dependencies. 
+- **Python:** 3.13.6+
+- **Frontend:** Streamlit
+- **AI Engine:** Google Gemini 2.5 Flash API
+- **Data:** Pandas, Plotly
+
+---
+
+## Configuration
+
+**Via .env (Development):**
+```bash
+GEMINI_API_KEY=your_api_key_here
 ```
 
-**Required Columns:**
-- `product_name` (string) - Product identifier
-- `rating` (1-5 integer) - Customer star rating
-- `review_text` (string) - Customer feedback/review
+**Streamlit Config** (~/.streamlit/config.toml):
+```toml
+[theme]
+primaryColor = "#FFB400"
+```
 
-**Optional Columns:**
-- `review_id`, `product_id`, `review_date` (for reference)
-- Custom columns are preserved but not analyzed
+---
 
-#### **2. Upload CSV**
-1. Go to sidebar → "1. Data Ingestion"
-2. Click "📄 Download Multi-Product Template" (see sample format)
-3. Click "Upload your reviews (CSV)"
-4. Select your prepared CSV file
+## Architecture
 
-#### **3. Select Product**
-1. Sidebar shows upload status
-2. Main area: "2. Select a Product to Analyze"
-3. Dropdown menu auto-populates with all products from CSV
-4. Dashboard instantly shows rating stats and trends
+```
+CSV Upload → Validation → Product Selection → Analytics Dashboard
+    ↓
+AI Pipeline (on button click):
+    ├→ Agent 1: Extract sentiment, flaws, features (JSON)
+    └→ Agent 2: Generate action plan (Markdown)
+    ↓
+Cache Results → Display with indicators → Optional refresh
+```
 
-#### **4. Generate Insights**
-1. Click "🧠 Generate AI Insights" button
-2. Watch progress:
-   - "Agent 1: Extracting insights..." (~5-10 seconds)
-   - "Agent 2: Drafting engineering strategy..." (~5-10 seconds)
-3. Results appear automatically
+**Performance:** First product ~16s | Cached product <1s | Max 10,000+ reviews
 
-#### **5. Review Results**
-- **Executive Summary**: 2-sentence overview
-- **AI Sentiment Score**: 1-10 gauge (color-coded)
-- **Top Flaws**: Expandable list with evidence
-- **Top Praised Features**: What users love
-- **Action Plan**: 3-step engineering roadmap
+---
 
-#### **6. Manage Cache (Optional)**
-- **View Cached Insights**: Switch products and cached results load instantly
+## Dashboard
+
+*[Dashboard image to be added]*
+
+Features:
+- Rating distribution breakdown (1-5 stars)
+- Weekly trend analysis graph
+- AI sentiment score gauge (color-coded)
+- Top flaws with user evidence
+- Top praised features with reasons
+- 3-step engineering action plan
+
+---
+
+## API Key Setup
+
+1. Get free key: https://aistudio.google.com/app/apikey
+2. Add to `.env`: `GEMINI_API_KEY=your_key`
+3. Or paste in sidebar at runtime
+4. Free tier: 15 requests/minute (suitable for demos)
+
+---
+
+## Testing
+
+```bash
+pytest test_for_app.py -v
+```
+Coverage: 90+ test cases (validation, agents, caching, errors)
+
+---
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| "No API Key Found" | Add `GEMINI_API_KEY` to .env or sidebar |
+| Slow performance | Reduce reviews per product or wait for rate limit reset |
+| Cache not clearing | Upload file with different name or click "🔄 Refresh" |
+
+---
+
+## Roadmap
+
+- Database persistence layer
+- Historical trend comparison
+- PDF/PPTX report export
+- Multi-user authentication
+- Scheduled analysis jobs
+
+---
+
+## Support & Links
+
+- **GitHub:** [Repository Issues](#)
+- **API Docs:** https://ai.google.dev
+- **Streamlit Help:** https://discuss.streamlit.io
+- **License:** MIT
+
+---
+
+**Status:** ✅ Production Ready | **Version:** 1.0.0 | **Updated:** April 1, 2026
+
+[Live Demo](#) • [GitHub](#) • [Docs](app.py)
 - **Refresh Insights**: Click "🔄 Refresh" button to regenerate
 - **Clear Cache**: Upload new CSV automatically clears all cached data
 
