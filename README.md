@@ -2,8 +2,8 @@
 
 > **Transform raw customer reviews into actionable product strategy in seconds using advanced AI agents**
 
-![Python](https://img.shields.io/badge/Python-3.9+-3776ab?style=flat-square&logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.40+-FF4B4B?style=flat-square&logo=streamlit)
+![Python](https://img.shields.io/badge/Python-3.13.6-3776ab?style=flat-square&logo=python)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.55-FF4B4B?style=flat-square&logo=streamlit)
 ![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.5%20Flash-4285F4?style=flat-square&logo=google)
 ![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
